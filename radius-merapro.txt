@@ -1,0 +1,187 @@
+--- START: [pkt#2/ACCT-STOP] --------------------------------------
+        called-station-id => 7615967712377379
+           xpgk-record-id => 01629474-46954069
+          h323-gw-address => 98.158.144.230
+             h323-conf-id => 9E84AA90 962E11E5 A3CD001E C9AEA254
+    h323-incoming-call-id => 19576784 21124607 75649815 81442430
+         acct-status-type => Stop
+     h323-disconnect-time => 00:17:47.683 UTC Sun Nov 29 2015
+    h323-disconnect-cause => 22
+    h323-incoming-conf-id => 9E84C3B8 962E11E5 A3CD001E C9AEA254
+             h323-call-id => 9E84AA90 962E11E5 A3CD001E C9AEA254
+         h323-call-origin => answer
+       xpgk-dst-number-in => 7615967712377379
+           nas-ip-address => 204.110.9.204
+               h323-gw-id => RudraGlobal
+             service-type => Login-User
+xpgk-local-src-signaling-address => 204.110.9.204
+xpgk-local-disconnect-cause => 2097169
+          h323-setup-time => 00:17:47.683 UTC Sun Nov 29 2015
+           h323-call-type => VoIP
+            xpgk-last-cdr => 1
+                user-name => 98.158.144.230
+        acct-session-time => 0
+          acct-delay-time => 0
+       xpgk-route-retries => 0
+        h323-connect-time => 00:17:47.683 UTC Sun Nov 29 2015
+       xpgk-src-number-in => 971504449653
+          acct-session-id => 01629474-469540691
+            nas-port-type => Async
+       calling-station-id => 971504449653
+--- END: [pkt#2/ACCT-STOP]   --------------------------------------
+       
+       
+--- START: [pkt#10/AUTH] --------------------------------------
+        called-station-id => 76022348135002554
+           xpgk-record-id => 01629475-69188427
+          h323-gw-address => 195.219.39.9
+        xpgk-request-type => route
+      xpgk-src-number-out => 6047263829
+            user-password => xpgk
+             h323-conf-id => A09313C6 962E11E5 A3CD001E C9AEA254
+    h323-incoming-call-id => A0207FDC 962E11E5 A9370025 90D192EA
+    h323-incoming-conf-id => A018B4BE 962E11E5 A92C0025 90D192EA
+             h323-call-id => A09313C6 962E11E5 A3CD001E C9AEA254
+       xpgk-dst-number-in => 76022348135002554
+           nas-ip-address => 204.110.9.204
+               h323-gw-id => LexicoVoip
+      xpgk-dst-number-out => 76022348135002554
+     xpgk-routing-request => 1
+             service-type => Login-User
+xpgk-local-src-signaling-address => 204.110.9.204
+          h323-setup-time => 00:17:51.133 UTC Sun Nov 29 2015
+                user-name => 195.219.39.9
+       xpgk-route-retries => 0
+       xpgk-src-number-in => 6047263829
+          acct-session-id => 01629475-69188427-0
+            nas-port-type => Async
+       calling-station-id => 6047263829
+--- END: [pkt#10/AUTH]   --------------------------------------
+--- START: [pkt#3/ACCT-STOP] --------------------------------------
+        called-station-id => 66619647575752795
+      xpgk-src-number-out => 989183624954
+           xpgk-record-id => 03055712-88522365
+xpgk-local-src-signaling-address => 204.110.9.204
+            xpgk-pdd-time => 0:00:00
+           h323-remote-id => SpeedTelecom_GW
+             h323-conf-id => C3754E04 97C311E5 A3D6001E C9AEA254
+    h323-incoming-call-id => 510952A1 63616C6C 384A37D5 21821321
+         acct-status-type => Stop
+     h323-disconnect-time => 00:38:05.834 UTC Tue Dec 01 2015
+    h323-disconnect-cause => 10
+    h323-incoming-conf-id => C3756FEC 97C311E5 A3D6001E C9AEA254
+             h323-call-id => C37B635C 97C311E5 A3D6001E C9AEA254
+         h323-call-origin => originate
+       xpgk-dst-number-in => 77629647575752795
+           nas-ip-address => 204.110.9.204
+      xpgk-dst-number-out => 66619647575752795
+      h323-remote-address => 163.172.8.18
+               h323-gw-id => Quickcom
+             service-type => Login-User
+            xpgk-scd-time => 0:00:09.959694
+          h323-gw-address => 218.213.210.221
+xpgk-local-disconnect-cause => 262631
+          h323-setup-time => 00:37:55.874 UTC Tue Dec 01 2015
+           h323-call-type => VoIP
+            xpgk-last-cdr => 1
+                user-name => 218.213.210.221
+          acct-delay-time => 0
+       xpgk-route-retries => 0
+        h323-connect-time => 00:38:05.834 UTC Tue Dec 01 2015
+       xpgk-src-number-in => 989183624954
+          acct-session-id => 03055712-88522365-OV1
+            nas-port-type => Async
+       calling-station-id => 989183624954
+--- END: [pkt#3/ACCT-STOP]   --------------------------------------
+--- START: [pkt#5/ACCT-STOP] --------------------------------------
+        called-station-id => 66619647575752795
+      xpgk-src-number-out => 989183624954
+           xpgk-record-id => 03055712-88522365
+xpgk-local-src-signaling-address => 204.110.9.204
+            xpgk-pdd-time => 0:00:00
+           h323-remote-id => SpeedTelecom_GW
+             h323-conf-id => C3754E04 97C311E5 A3D6001E C9AEA254
+    h323-incoming-call-id => 510952A1 63616C6C 384A37D5 21821321
+         acct-status-type => Stop
+     h323-disconnect-time => 00:38:05.833 UTC Tue Dec 01 2015
+    h323-disconnect-cause => 10
+    h323-incoming-conf-id => C3756FEC 97C311E5 A3D6001E C9AEA254
+             h323-call-id => C3754E04 97C311E5 A3D6001E C9AEA254
+         h323-call-origin => answer
+       xpgk-dst-number-in => 77629647575752795
+           nas-ip-address => 204.110.9.204
+      xpgk-dst-number-out => 66619647575752795
+      h323-remote-address => 163.172.8.18
+               h323-gw-id => Quickcom
+             service-type => Login-User
+            xpgk-scd-time => 0:00:09.999689
+          h323-gw-address => 218.213.210.221
+xpgk-local-disconnect-cause => 262631
+          h323-setup-time => 00:37:55.834 UTC Tue Dec 01 2015
+           h323-call-type => VoIP
+            xpgk-last-cdr => 1
+                user-name => 218.213.210.221
+          acct-delay-time => 0
+       xpgk-route-retries => 0
+        h323-connect-time => 00:38:05.833 UTC Tue Dec 01 2015
+       xpgk-src-number-in => 989183624954
+          acct-session-id => 03055712-88522365-AV1
+            nas-port-type => Async
+       calling-station-id => 989183624954
+--- END: [pkt#5/ACCT-STOP]   --------------------------------------
+--- START: [pkt#304/ACCT-STOP] --------------------------------------
+        called-station-id => 4243233273244755
+      xpgk-src-number-out => 447832670734
+           xpgk-record-id => 08664962-54497906
+xpgk-local-src-signaling-address => 209.8.5.228
+            xpgk-pdd-time => 0:00:04.924383
+           h323-remote-id => Voicekings_GW1
+           xpgk-src-codec => g.729
+  xpgk-source-rtp-address => 72.52.124.28
+xpgk-destination-faststart => 0
+    h323-incoming-call-id => 31683854 33657919 03152784 0C2DAC00
+         acct-status-type => Stop
+     h323-disconnect-time => 00:38:38.047 UTC Tue Dec 01 2015
+    h323-disconnect-cause => 10
+    h323-incoming-conf-id => A90EC8F6 97C311E5 A3D4001E C9AA52B0
+             h323-call-id => A921E774 97C311E5 A3D4001E C9AA52B0
+    xpgk-source-faststart => 0
+         h323-call-origin => originate
+       xpgk-dst-number-in => 7749233273244755
+    xpgk-dest-rtp-address => 149.6.123.251
+           xpgk-dst-codec => g.729
+           nas-ip-address => 209.8.5.228
+      xpgk-dst-number-out => 4243233273244755
+             h323-conf-id => A90E9E1C 97C311E5 A3D4001E C9AA52B0
+      h323-remote-address => 149.6.123.251
+               h323-gw-id => XICOMM
+             service-type => Login-User
+            xpgk-scd-time => 0:00:18.456727
+          h323-gw-address => 72.52.124.18
+xpgk-local-disconnect-cause => 65546
+          h323-setup-time => 00:37:11.667 UTC Tue Dec 01 2015
+           h323-call-type => VoIP
+            xpgk-last-cdr => 1
+                user-name => 72.52.124.18
+        acct-session-time => 68
+          acct-delay-time => 0
+       xpgk-route-retries => 1
+        h323-connect-time => 00:37:30.124 UTC Tue Dec 01 2015
+       xpgk-src-number-in => 447832670734
+          acct-session-id => 08664962-54497906-OV2
+            nas-port-type => Async
+       calling-station-id => 447832670734
+--- END: [pkt#304/ACCT-STOP]   --------------------------------------
+--- START: [pkt#11/AUTH] --------------------------------------
+            h323-currency => USD
+         h323-credit-time => 2277966
+       h323-credit-amount => 8162.71
+       cisco-command-code => NoorTelecom_GW/1/633479862/909022247982437/633479862/909022247982437
+--- END: [pkt#11/AUTH]   --------------------------------------
+
+--- START: [pkt#9/AUTH] --------------------------------------
+            h323-currency => USD
+         h323-credit-time => 10150240
+       h323-credit-amount => 4905.95
+       cisco-command-code => ['Breeze_GW1/1/8098258072/2348135002554/6047263829/2348135002554', 'Breeze_GW2/1/8099012078/2348135002554/6047263829/2348135002554']
+--- END: [pkt#9/AUTH]   --------------------------------------

@@ -1,0 +1,358 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+
+	<server>
+		<maxthreads>15</maxthreads>
+		<address>172.16.162.1</address>
+		<base-directory>/opt/admtel</base-directory>
+		<script-path>.;./dynamic_beans;/Users/hassanmoghnie/adm/adm-telephony-scripts/src</script-path>
+		<log>true</log>
+	</server>
+
+	<radius>
+<!--  		<server>
+			<id>first radius server</id>
+			<address>172.16.162.136</address>
+			<auth-port>1812</auth-port>
+			<acct-port>1813</acct-port>
+			<secret>password</secret>
+			<retry-count>5</retry-count>
+			<socket-timeout>5000</socket-timeout>
+		</server>
+ --> 	</radius>
+
+	<!-- SWITCH LISTENERS START -->
+	<switch-listeners>
+		<switch-listener>
+			<address>172.16.162.1</address>
+			<port>8084</port>
+			<type>freeswitch</type>
+		</switch-listener>
+		<switch-listener>
+			<address>172.16.162.1</address>
+			<port>4573</port>
+			<type>asterisk</type>
+		</switch-listener>
+	</switch-listeners>
+	<!-- SWITCH LISTENERS END -->
+
+	<!-- HTTP LISTENERS START -->
+	<http-servers>
+		<http-server>
+			<id>dot34</id>
+			<address>172.16.162.1</address>
+			<port>8057</port>
+			<adm-servlet>
+				<path>FSConfigurator</path>
+				<class>#FSConfiguratorServlet</class>
+			</adm-servlet>
+			<adm-servlet>
+				<path>asterisk-curl/single</path>
+				<class>#ASTConfiguratorServlet</class>
+			</adm-servlet>
+			<adm-servlet>
+				<path>test</path>
+				<class>dynamic_beans/TestAdmServlet.groovy</class>
+			</adm-servlet>
+			<adm-servlet>
+				<path>webconf</path>
+				<class>#webconf</class>
+			</adm-servlet>
+			<adm-servlet>
+				<path>webapi</path>
+				<class>#webapi</class>
+			</adm-servlet>			
+		</http-server>
+		<!-- <http-server> -->
+		<!-- <id>Manager</id> -->
+		<!-- <address>10.0.2.1</address> -->
+		<!-- <port>8058</port> -->
+		<!-- <adm-servlet>dynamic_beans/HttpManager.groovy</adm-servlet> -->
+		<!-- </http-server> -->
+	</http-servers>
+	<!-- HTTP LISTENERS START -->
+
+	<!-- SWITCHES START -->
+	<switches>
+		<switch>
+			<name>MyFreeswitch</name>
+			<address>172.16.162.133</address>
+			<port>8021</port>
+			<username>admin</username>
+			<password>admin</password>
+			<type>freeswitch</type>
+			<addresstranslator>com.admtel.telephonyserver.addresstranslators.DefaultFSAddressTranslator
+			</addresstranslator>
+			<enabled>false</enabled>			
+			<parameters>			
+				<parameter name="udp_sip_address" value="192.168.43.202"/>
+				<parameter name="udp_sip_port" value="5080"/>
+				<parameter name="tcp_sip_address" value="192.168.43.202"/>
+				<parameter name="tcp_sip_port" value="5082"/>
+				<parameter name="tls_sip_address" value="192.168.43.202"/>
+				<parameter name="tls_sip_port" value="5081"/>	
+			</parameters>	
+			
+		</switch>
+ 		<switch>
+			<name>Asterisk_1</name>
+			<address>172.16.162.129</address>
+			<port>5038</port>
+			<username>admin</username>
+			<password>password</password>
+			<type>asterisk</type>
+			<addresstranslator>com.admtel.telephonyserver.addresstranslators.DefaultASTAddressTranslator
+			</addresstranslator>
+			<enabled>true</enabled>
+			<parameters>			
+				<parameter name="udp_sip_address" value="77.42.246.148"/>
+				<parameter name="udp_sip_port" value="5080"/>
+				<parameter name="tcp_sip_address" value="77.42.246.148"/>
+				<parameter name="tcp_sip_port" value="5082"/>
+				<parameter name="tls_sip_address" value="77.42.246.148"/>
+				<parameter name="tls_sip_port" value="5081"/>	
+			</parameters>	
+		</switch>
+	</switches>
+	<!-- SWITCHES END -->
+
+	<!-- SCRIPT FACTORIES START -->
+	<scriptfactories>
+		<!-- <scriptfactory> -->
+		<!-- <class>/opt/admtel/adm-telephony-scripts/src/WSScriptFactory.groovy</class> -->
+		<!-- </scriptfactory> -->
+		<scriptfactory>
+			<class>com.admtel.telephonyserver.scriptfactories.VariableScriptFactory</class>
+		</scriptfactory>
+		<scriptfactory>
+			<class>com.admtel.telephonyserver.scriptfactories.XMLScriptFactory
+			</class>
+		</scriptfactory>
+	</scriptfactories>
+	<!-- SCRIPT FACTORIES END -->
+
+	<!--EVENT LISTENERS START -->
+	<event-listeners>
+<!--		<event-listener>-->
+<!--			<class>com.admtel.telephonyserver.eventlisteners.SimpleEventListener-->
+<!--			</class>-->
+<!--		</event-listener>-->
+<!--		<event-listener>-->
+<!--			<class>dynamic_beans/MyEventListener.groovy</class>-->
+<!--		</event-listener>-->
+	</event-listeners>
+	<!--EVENT LISTENERS END -->
+
+	<!--PROMPT BUILDERS START -->
+	<prompt-builders>
+		<prompt-builder>
+			<language>en</language>
+			<class>com.admtel.telephonyserver.prompts.EnglishPromptBuilder
+			</class>
+		</prompt-builder>
+		<prompt-builder>
+			<language>ar</language>
+			<class>com.admtel.telephonyserver.prompts.ArabicPromptBuilder</class>
+		</prompt-builder>
+		<prompt-builder>
+			<language>fr</language>
+			<class>com.admtel.telephonyserver.prompts.FrenchPromptBuilder</class>
+		</prompt-builder>
+	</prompt-builders>
+	<!--PROMPT BUILDERS END -->
+
+
+	<beans>
+<!--		<bean>-->
+<!--			<class>com.admtel.telephonyserver.remote.JSonSocketManagerBean-->
+<!--			</class>-->
+<!--			<id>json_api</id>-->
+<!--			<parameters>-->
+<!--				<parameter name="address" value="10.0.2.1"/>-->
+<!--				<parameter name="port" value="12341"/>-->
+<!--			</parameters>-->
+<!--		</bean>-->
+		
+<!-- 		<bean>
+			<class>/Users/hassanmoghnie/adm/adm-telephony-scripts/src/data/DB_AcdDataProvider.groovy</class>
+			<parameters>
+
+				<parameter name="dbUrl" value="jdbc:postgresql://192.168.10.1:32768/adm_appserver"/>
+				<parameter name="dbUser" value="tester"/>
+				<parameter name="dbPassword" value="tester1234"/>
+				<parameter name="dbDriver" value="org.postgresql.Driver"/>
+			</parameters>
+
+			<id>dbAcdDataProvider</id>
+ 		</bean> -->
+		
+<!-- 		<bean>
+		 <class>com.admtel.telephonyserver.acd.impl.AcdServiceImpl</class>
+		 <id>acdService</id>
+		 <parameters>
+		 	<parameter name="acdDataProvider" value="dbAcdDataProvider"/>
+		 </parameters>
+		</bean>
+		
+		<bean>
+			<class>com.admtel.telephonyserver.acd.AcdManager</class>
+			<id>AcdManager</id>
+			<parameters>
+				<parameter name="acdService" value="acdService"/>
+				<parameter name="timeout" value="5000"/>
+			</parameters>
+		</bean> -->
+		
+<!-- 		<bean>
+			<class>dynamic_beans/ManagerBean.groovy</class>
+			<id>manager</id>
+			<parameters>
+				<parameter name="address" value="192.168.1.60"/>
+				<parameter name="port" value="1234"/>
+			</parameters>
+		</bean>
+ --><!--		<bean>-->
+<!--			<class>/opt/admtel/adm-telephony-scripts/src/DBConferenceHelperBean.groovy-->
+<!--			</class>-->
+<!--			<id>conferencer-helper</id>-->
+<!--			<parameters>-->
+<!--				<parameter name="dbUrl" value="jdbc:postgresql://10.0.2.1:32768/adm_appserver"/>-->
+<!--				<parameter name="dbUser" value="tester"/>-->
+<!--				<parameter name="dbPassword" value="tester1234"/>-->
+<!--				<parameter name="dbDriver" value="org.postgresql.Driver"/>-->
+<!--			</parameters>-->
+<!--		</bean>-->
+<!-- 		<bean>
+			<class>/Users/hassanmoghnie/adm/adm-telephony-scripts/src/REST_ConferenceHelperBean.groovy
+			</class>
+			<id>conferencer-helper</id>
+			<parameters>
+				<parameter name="restURL" value="http://192.168.10.1:8058/adm-conference-server/"/>
+				<parameter name="authToken" value="123456"/>
+			</parameters>
+		</bean>
+ -->
+
+		<bean>
+			<id>simple-user-dao</id>
+			<class>dynamic_beans/SimpleUserDAOImpl.groovy</class>
+		</bean>
+		<bean>
+			<id>db-user-dao</id>
+			<class>/Users/hassanmoghnie/adm/adm-telephony-scripts/src/data/DB_UserDAO.groovy</class>
+			<parameters>
+				<parameter name="dbUrl" value="jdbc:postgresql://localhost:32768/adm_appserver"/>
+				<parameter name="dbUser" value="postgres"/>
+				<parameter name="dbPassword" value=""/>
+				<parameter name="dbDriver" value="org.postgresql.Driver"/>
+			</parameters>
+		</bean>
+		<bean>
+			<id>rss-user-dao</id>
+			<class>/Users/hassanmoghnie/adm/adm-telephony-scripts/src/rss/RSS_UserDAO.groovy</class>
+			<parameters>
+				<parameter name="dbUrl" value="jdbc:postgresql://localhost:32768/adm_rbs"/>
+				<parameter name="dbUser" value="postgres"/>
+				<parameter name="dbPassword" value=""/>
+				<parameter name="dbDriver" value="org.postgresql.Driver"/>
+			</parameters>
+		</bean>
+		<bean>
+			<id>rss-gateway-dao</id>
+			<class>/Users/hassanmoghnie/adm/adm-telephony-scripts/src/rss/RSS_GatewayDAO.groovy</class>
+			<parameters>
+				<parameter name="dbUrl" value="jdbc:postgresql://localhost:32768/adm_rbs"/>
+				<parameter name="dbUser" value="postgres"/>
+				<parameter name="dbPassword" value=""/>
+				<parameter name="dbDriver" value="org.postgresql.Driver"/>
+			</parameters>
+		</bean>
+		<bean>
+			<id>rss-iplist-dao</id>
+			<class>/Users/hassanmoghnie/adm/adm-telephony-scripts/src/rss/RSS_IpListDAO.groovy</class>
+			<parameters>
+				<parameter name="dbUrl" value="jdbc:postgresql://localhost:32768/adm_rbs"/>
+				<parameter name="dbUser" value="postgres"/>
+				<parameter name="dbPassword" value=""/>
+				<parameter name="dbDriver" value="org.postgresql.Driver"/>
+			</parameters>
+		</bean>
+		<bean>
+			<id>FSConfiguratorServlet</id>
+			<class>src/com/admtel/telephonyserver/servlets/FSConfiguratorServlet.groovy</class>
+			<parameters>
+				<parameter name="userDAO" value="rss-user-dao"/>
+			</parameters>
+		</bean>
+		<bean>
+			<id>ASTConfiguratorServlet</id>
+			<class>src/com/admtel/telephonyserver/servlets/ASTConfiguratorServlet.groovy</class>
+			<parameters>
+				<parameter name="userDAO" value="rss-user-dao"/>
+				<parameter name="gatewayDAO" value="rss-gateway-dao"/>
+				<parameter name="ipListDAO" value="rss-iplist-dao"/>
+			</parameters>
+		</bean>
+<!-- 		<bean>
+			<id>webconf</id>
+			<class>dynamic_beans/web/WebConfServlet.groovy</class>
+			<parameters>
+				<parameter name="userAuthorizer" value="WebConfAuthorizer"/>
+			</parameters>
+		</bean>
+ -->		<bean>
+			<id>webapi</id>
+			<class>src/com/admtel/telephonyserver/servlets/WebAPI.groovy</class>
+			<parameters>
+				<parameter name="securityKey" value="123456"/>
+			</parameters>			
+		</bean>
+<!-- 		<bean>
+			<id>WebConfAuthorizer</id>
+			<class>dynamic_beans/WebConfAuthBean.groovy</class>
+		</bean>
+ --><!--         <bean>
+           <id>TimerTest</id>
+            <class>com.admtel.telephonyserver.misc.TimerTestBean</class>
+        </bean>        
+ -->
+<!--  		<bean>
+ 		    <id>cdr-listener</id>
+ 		    <class>dynamic_beans/CdrListener.groovy</class>
+ 		</bean>
+ --> 		
+ 		<bean>
+ 		    <id>rss-registrar</id>
+ 		    <class>/Users/hassanmoghnie/adm/adm-telephony-scripts/src/rss/RegistrarService.groovy</class>
+ 		    <parameters>
+				<parameter name="dbUrl" value="jdbc:postgresql://localhost:32768/adm_rbs"/>
+				<parameter name="dbUser" value="postgres"/>
+				<parameter name="dbPassword" value=""/>
+				<parameter name="dbDriver" value="org.postgresql.Driver"/>
+			</parameters>
+ 		</bean>	
+ 		<!-- <bean>
+ 		    <id>asterisk-log-monitor</id>
+ 		    <class>/Users/hassanmoghnie/adm/adm-telephony-scripts/src/rss/AsteriskLogMonitor.groovy</class>
+ 		    <parameters>
+ 		        <parameter name="logLocation" value="/var/log/asterisk/message"/>
+ 		        <parameter name="logLocation" value="/Users/hassanmoghnie/temp/messages"/>
+ 		        <parameter name="restPath" value="http://localhost:8082/adm-rbs/api/v2/75e55add-f3d3-487d-a61e-44f976de8b9c/"/>
+ 		    </parameters>
+ 		</bean> -->
+ 		
+ 		<bean>
+ 		    <id>ip-limiter-dao</id>
+ 		    <class>/Users/hassanmoghnie/adm/adm-telephony-scripts/src/rss/RSS_IpLimiterDAO.groovy</class>
+ 		    <parameters>
+				<parameter name="dbUrl" value="jdbc:postgresql://localhost:32768/adm_rbs"/>
+				<parameter name="dbUser" value="postgres"/>
+				<parameter name="dbPassword" value=""/>
+				<parameter name="dbDriver" value="org.postgresql.Driver"/>
+			</parameters>
+ 		</bean>	
+ 		
+ 		
+ 	</beans>
+
+</config>	
